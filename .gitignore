@@ -2,6 +2,10 @@
 *.png
 *.jpg
 *.root
+*.csv
+*.log
+
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks,c,c++,root
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,jupyternotebooks,c,c++,root
