@@ -4,7 +4,8 @@
 *.root
 *.csv
 *.log
-
+*.pkl
+*.json
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks,c,c++,root
