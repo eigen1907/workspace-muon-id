@@ -45,7 +45,7 @@ def init_model_and_scaler(data_dir, detid_table_path, output_model_dir, n_files=
     Y_sample = detid_encoder.transform(df_sample['det_raw_id'])
     X_train, X_val, Y_train, Y_val = train_test_split(X_sample, Y_sample, test_size=0.1, random_state=42)
 
-    model = XGBClassifier(n_estimators=100, max_depth=3, learning_rate=0.1, random_state=42)
+    model = XGBClassifier(n_estimators=100, max_depth=10, learning_rate=0.1, random_state=42)
     model.fit(X_train, Y_train, eval_set=[(X_val, Y_val)], verbose=True)
     
     if not os.path.exists(output_model_dir):
