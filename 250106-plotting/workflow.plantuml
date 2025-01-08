@@ -1,0 +1,72 @@
++-------------------------------------+   +-------------------------------------+
+| Reconstructed Track (from Tracker)  |   | Hits/Segments (from Muon Detectors) |
++-------------------------------------+   +-------------------------------------+
+                       \                                  /
+                        v                                v
+                     +--------------------------------------+
+                     |  TrackDetectorAssociator (In CMSSW)  |
+                     |--------------------------------------|
+                     | 1) If there is a Hits/Segments,      |
+                     |    Propagate tracks to beyond HCAL   |
+                     | 2) Find candidates for the matched   |
+                     |    muon chambers using dR            |
+                     | 3) Match track with hits/segments    |
+                     |    in candidate muon chambers        |
+                     +--------------------------------------+
+                                        |
+                                        v
+                     +--------------------------------------+
+                     |  TrackDetMatchInfo                   |
+                     | (Matched muon chambers/hits/segments)|
+                     +--------------------------------------+   
+                                        | 
+                                        v
+                     +--------------------------------------+
+                     |           MuonIdProducer             |
+                     |--------------------------------------|
+                     | 1) Merges track & match info         |
+                     | 2) Applies ID criteria               |
+                     |    (e.g., GlobalMuon, TrackerMuon)   |
+                     +--------------------------------------+
+                                        |
+                                        v
+                     +--------------------------------------+
+                     |           Muon Collection            |
+                     +--------------------------------------+
+
+
++-------------------------------------+   +-------------------------------------+
+| Reconstructed Track (from Tracker)  |   | Hits/Segments (from Muon Detectors) |
++-------------------------------------+   +-------------------------------------+
+                        \                                 /
+                         v                               v
+                     +--------------------------------------+
+                     |  TrackDetectorAssociator (using BDT) |
+                     |--------------------------------------|
+                     | 1) Find candidates for the matched   |
+                     |    muon chambers using BDT           |
+                     |    (using track pT, eta, phi)        |
+                     | 2) Match track with hits/segments    |
+                     |    in candidate muon chambers        |
+                     |                                      |
+                     +--------------------------------------+
+                                        |
+                                        v
+                     +--------------------------------------+
+                     |  TrackDetMatchInfo                   |
+                     | (Matched muon chambers/hits/segments)|
+                     +--------------------------------------+       
+                                        | 
+                                        v
+                     +--------------------------------------+
+                     |           MuonIdProducer             |
+                     |--------------------------------------|
+                     | 1) Merges track & match info         |
+                     | 2) Applies ID criteria               |
+                     |    (e.g., GlobalMuon, TrackerMuon)   |
+                     +--------------------------------------+
+                                        |
+                                        v
+                     +--------------------------------------+
+                     |           Muon Collection            |
+                     +--------------------------------------+
