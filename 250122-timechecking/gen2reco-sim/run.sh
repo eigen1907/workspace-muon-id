@@ -1,0 +1,1 @@
+cmsRun raw2reco-sim.py inputFiles=file:gensimraw.root outputFile=reco.root

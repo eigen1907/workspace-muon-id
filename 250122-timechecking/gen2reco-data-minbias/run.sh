@@ -1,0 +1,1 @@
+cmsRun raw2reco-data.py inputFiles=file:/eos/cms/store/data/Run2023C/MinimumBias/RAW/v1/000/369/525/00000/0c21dba3-0d36-4ae6-a8e6-419da033d956.root outputFile=reco.root

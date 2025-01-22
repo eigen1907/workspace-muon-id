@@ -1,0 +1,1 @@
+cmsRun raw2reco-data.py inputFiles=file:/eos/cms/store/data/Run2023C/Muon1/RAW/v1/000/367/131/00000/0915df61-2991-41a0-906b-50ddcc23c484.root outputFile=reco.root

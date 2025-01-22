@@ -1,0 +1,18 @@
+
+# in: /afs/cern.ch/user/j/joshin/workspace-lxplus/TrackDetAssociatorML/CMSSW_14_2_1/workspace going to execute cd 141.032_RunZeroBias2023C
+ echo '{
+"367131" : [[1, 149]]
+}' > step1_lumiRanges.log  2>&1
+ 
+
+# in: /afs/cern.ch/user/j/joshin/workspace-lxplus/TrackDetAssociatorML/CMSSW_14_2_1/workspace going to execute cd 141.032_RunZeroBias2023C
+ (dasgoclient --limit 0 --query 'lumi,file dataset=/ZeroBias/Run2023C-v1/RAW run=367131' --format json | das-selected-lumis.py 1,149 ) | sort -u > step1_dasquery.log  2>&1
+ 
+
+# in: /afs/cern.ch/user/j/joshin/workspace-lxplus/TrackDetAssociatorML/CMSSW_14_2_1/workspace going to execute cd 141.032_RunZeroBias2023C
+ cmsDriver.py step2  --process reHLT -s L1REPACK:Full,HLT:@relval2023 --conditions auto:run3_hlt_relval --data  --eventcontent FEVTDEBUGHLT --datatier FEVTDEBUGHLT --era Run3_2023 -n 100  --filein filelist:step1_dasquery.log --lumiToProcess step1_lumiRanges.log --fileout file:step2.root  > step2_RunZeroBias2023C.log  2>&1
+ 
+
+# in: /afs/cern.ch/user/j/joshin/workspace-lxplus/TrackDetAssociatorML/CMSSW_14_2_1/workspace going to execute cd 141.032_RunZeroBias2023C
+ cmsDriver.py step3  --conditions auto:run3_data_relval -s RAW2DIGI,L1Reco,RECO,PAT,NANO,DQM:@rerecoZeroBiasFakeHLT+@miniAODDQM+@nanoAODDQM --datatier RECO,MINIAOD,NANOAOD,DQMIO --eventcontent RECO,MINIAOD,NANOEDMAOD,DQM --data  --process reRECO --scenario pp --era Run3_2023 --customise Configuration/DataProcessing/RecoTLR.customisePostEra_Run3 --hltProcess reHLT -n 100  --filein  file:step2.root  --fileout file:step3.root  > step3_RunZeroBias2023C.log  2>&1
+ 
